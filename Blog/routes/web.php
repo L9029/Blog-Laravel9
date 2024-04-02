@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PageController; //Se llama al controlador PageController que maneja la logica de el Blog
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+/**
+ * Route::get     | Consultar
+ * Route::post    | Guardar
+ * Route::delete  | Eliminar
+ * Route::put     | Actualizar
+ */
+
+//Se crea un grupo del controlador para almazenar mejor nuestras rutas
+
+Route::controller(PageController::class)->group(function (){
+    //El segundo parametro de la funcion get es el metodo que posee el Controlador PageController
+    Route::get('/', "home")->name("home");
+    Route::get('blog', "blog")->name("blog");
+    Route::get('blog/{slug}', "post")->name("post");
 });

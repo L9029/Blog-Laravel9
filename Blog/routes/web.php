@@ -30,5 +30,5 @@ Route::controller(PageController::class)->group(function (){
     //El segundo parametro de la funcion get es el metodo que posee el Controlador PageController
     Route::get('/', "home")->name("home");
     Route::get('blog', "blog")->name("blog");
-    Route::get('blog/{slug}', "post")->name("post");
+    Route::get('blog/{post:slug}', "post")->name("post"); //El parametro slug pasa a ser una propiedad de la tabla posts
 });

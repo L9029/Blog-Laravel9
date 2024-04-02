@@ -21,7 +21,8 @@ class PostFactory extends Factory
         return [
             "title" => $title = $this->faker->sentence(),
             "slug" => Str::slug($title),
-            "body" => $this->faker->text(2200)
+            "body" => $this->faker->text(2200),
+            "user_id" => 1 //Se asigna solamente 1 ya que se esta trabajando con un unico usuario de pruebas
         ];
     }
 }

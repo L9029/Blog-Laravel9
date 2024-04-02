@@ -18,6 +18,10 @@ return new class extends Migration
             $table->string("title");
             $table->string("slug")->unique();
             $table->text("body");
+            
+            //Creando un campo que contiene una llave foranea del id de la tabla users
+            $table->unsignedBigInteger("user_id"); //Se le pide que el campo solo acepte numeros positivos y que sean de tipo int
+            $table->foreign("user_id")->references("id")->on("users"); //Crea la llave foranea
             $table->timestamps();
         });
     }

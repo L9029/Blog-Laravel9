@@ -22,7 +22,13 @@
                                     <a href="" class="text-indigo-600">Editar</a>
                                 </td>
                                 <td class="px-6 py-4">
-                                    Eliminar
+                                    <!-- Para Eliminar se especifica la ruta y el metodo en el primer parametro y luego se especifica el objeto a eliminar -->
+                                    <form action="{{ route('posts.destroy', $post) }}" method="post">
+                                        @csrf <!--Esta opcion genera un token de seguridad-->
+                                        @method("DELETE") <!--Se especifica la Terea a Realizar-->
+
+                                        <input type="submit" value="Eliminar" class="bg-gray-900 text-white rounded px-4 py-2" onclick="return confirm('Desea Eliminar el Post?')">
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach

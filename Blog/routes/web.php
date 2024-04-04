@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController; //Se llama al controlador PageController que maneja la logica de el Blog
+use App\Http\Controllers\PostController; //Se llama al controlador que manejara los posts en el dashboard del usuario
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +40,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+//Ruta del listado de publicaciones
+Route::resource("posts", PostController::class)->except("show");
 
 
 require __DIR__.'/auth.php';

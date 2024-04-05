@@ -5,15 +5,31 @@
         <div>
             <strong>
                 <label class="uppercase text-gray-100 text-base">{{ __('Titulo') }}</label>
+
+                <!-- Alerta que especifica si el campo es requerido o ya existe -->
+                <span class="text-xs text-red-500">
+                    @error("title")
+                    {{ $message }}
+                    @enderror
+                </span>
+                
             </strong>
 
-            <input type="text" name="title" value="{{ $post->title }}" class="rounded border-gray-200 dark:bg-gray-900 w-full mp-4">
+            <input type="text" name="title" value="{{ old('title', $post->title) }}" class="rounded border-gray-200 dark:bg-gray-900 w-full mp-4">
 
             <strong>
                 <label class="uppercase text-gray-100 text-base">{{ __('Contenido') }}</label>
+
+                <!-- Alerta que especifica si el campo es requerido o ya existe -->
+                <span class="text-xs text-red-500">
+                    @error("body")
+                    {{ $message }}
+                    @enderror
+                </span>
+
             </strong>
 
-            <textarea name="body" rows="13" class="rounded border-gray-200 dark:bg-gray-900 w-full mp-4">{{ $post->body }}</textarea>
+            <textarea name="body" rows="13" class="rounded border-gray-200 dark:bg-gray-900 w-full mp-4">{{ old('body', $post->body) }}</textarea>
 
             <div class="flex justify-between items-center">
                 <a href="{{ route('posts.index') }}" class="bg-gray-900 text-white rounded px-4 py-2">

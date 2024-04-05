@@ -36,6 +36,18 @@ class PostController extends Controller
         return redirect()->route("posts.edit", $post); //Redirecciona el parametro post a la ruta de editar post
     }
 
+    //Methodo para actualizar un posts que fue editado
+    public function update(Request $request, Post $post){
+        //Recibe dos instancias, una con el contenido del Post y otra con los cambios enviados desde el formulario edit
+        $post->update([
+            "title" => $title = $request->title,
+            "slug" => Str::slug($title),
+            "body" => $request->body
+        ]);
+    
+        return redirect()->route("posts.edit", $post); //Redirecciona el parametro post a la ruta de editar post
+    }
+
     //Metodo para Eliminar los posts
     public function destroy(Post $post){
         $post->delete(); //Elimina el post

@@ -14,8 +14,8 @@ class PostController extends Controller
     }
 
     //Methodo para crear un Post
-    public function create(){
-        return view("posts.create"); //Llama a la vista para crear un nuevo post
+    public function create(Post $post){
+        return view("posts.create", ["post" => $post]); //Llama a la vista para crear un nuevo post iniciando una nueva instancia del mismo pasada por parametro
     }
 
     //Methodo para Editar un Post

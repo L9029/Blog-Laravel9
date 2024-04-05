@@ -24,7 +24,7 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     <!-- Ruta para la edicion de un Post -->
-                                    <a href="{{ route('posts.edit', $post) }}" class="text-indigo-600 bg-gray-900 text-white rounded px-4 py-2" onclick="">
+                                    <a href="{{ route('posts.edit', $post) }}" class="bg-gray-900 text-white rounded px-4 py-2" onclick="">
                                     {{ __("Editar") }}
                                     </a>
                                 </td>

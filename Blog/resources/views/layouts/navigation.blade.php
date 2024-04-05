@@ -16,6 +16,12 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                <!-- Agregando la ruta para el listado de publicaciones -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('posts.index')" :active="request()->routeIs('dashboard')">
+                        {{ __('Listado de Publicaciones') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

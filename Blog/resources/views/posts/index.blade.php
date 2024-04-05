@@ -1,7 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight flex items-center justify-between">
             {{ __('Posts') }}
+            <!-- Ruta para la creacion de los Posts -->
+            <a href="{{ route('posts.create') }}" class="text-sm bg-gray-900 text-white rounded px-2 py-1">
+            {{ __('Crear') }}
+            </a>
         </h2>
     </x-slot>
 
@@ -19,7 +23,10 @@
                                     {{ $post->title }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    <a href="" class="text-indigo-600">Editar</a>
+                                    <!-- Ruta para la edicion de un Post -->
+                                    <a href="{{ route('posts.edit', $post) }}" class="text-indigo-600 bg-gray-900 text-white rounded px-4 py-2" onclick="">
+                                    {{ __("Editar") }}
+                                    </a>
                                 </td>
                                 <td class="px-6 py-4">
                                     <!-- Para Eliminar se especifica la ruta y el metodo en el primer parametro y luego se especifica el objeto a eliminar -->

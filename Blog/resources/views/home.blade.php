@@ -1,7 +1,12 @@
 @extends("template")
 @section("content")
-<div>
+<div class="bg-gray-900 px-20 py-16 rounded-lg mb-8 relative overflow-hidden">
     <!-- Informacion Destacada -->
+    <span class="text-xs uppercase text-gray-700 bg-gray-400 rounded-full px-2 py-1">Programación</span>
+    <h1 class="text-3xl text-white mt-4">Blog</h1>
+    <p class="text-sm text-gray-400 mt-2">Proyecto de Desarrollo Web para Profesionales</p>
+
+    <img src="{{ asset('images/dev.png') }}" class="absolute right-20 -bottom-40 opacity-20">
 </div>
 
 <!-- Paginacion de los Posts en el Home -->

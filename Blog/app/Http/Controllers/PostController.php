@@ -30,12 +30,13 @@ class PostController extends Controller
         //Validacion de envio de formulario con datos duplicados o vacios
         $request->validate([
             "title" => "required",
+            "slug" => "required|unique:posts,slug", //Indica que el valor enviando debe de ser unico y valida si el mismo ya existe en la columna slug de la tabla posts
             "body" => "required"
         ]);
 
         $post = $request->user()->posts()->create([
-            "title" => $title = $request->title,
-            "slug" => Str::slug($title),
+            "title" => $request->title,
+            "slug" => $request->slug,
             "body" => $request->body
         ]);
 
@@ -48,13 +49,14 @@ class PostController extends Controller
         //Validacion de envio de formulario con datos duplicados o vacios
         $request->validate([
             "title" => "required",
+            "slug" => "required|unique:posts,slug," . $post->id, //Indica que el valor enviando debe de ser unico y valida si el mismo ya existe en la columna slug de la tabla posts pero que omita el mismo a la hora de editar un post
             "body" => "required"
         ]);
 
         //Recibe dos instancias, una con el contenido del Post y otra con los cambios enviados desde el formulario edit
         $post->update([
-            "title" => $title = $request->title,
-            "slug" => Str::slug($title),
+            "title" => $request->title,
+            "slug" => $request->slug,
             "body" => $request->body
         ]);
     

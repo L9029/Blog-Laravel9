@@ -3,6 +3,7 @@
 <main>
     <section>
         <div>
+            <!-- Titulo -->
             <strong>
                 <label class="uppercase text-gray-100 text-base">{{ __('Titulo') }}</label>
 
@@ -17,6 +18,22 @@
 
             <input type="text" name="title" value="{{ old('title', $post->title) }}" class="rounded border-gray-200 dark:bg-gray-900 w-full mp-4">
 
+            <!-- Slug -->
+            <strong>
+                <label class="uppercase text-gray-100 text-base">{{ __('Slug') }}</label>
+
+                <!-- Alerta que especifica si el campo es requerido o ya existe -->
+                <span class="text-xs text-red-500">
+                    @error("slug")
+                    {{ $message }}
+                    @enderror
+                </span>
+                
+            </strong>
+
+            <input type="text" name="slug" value="{{ old('slug', $post->slug) }}" class="rounded border-gray-200 dark:bg-gray-900 w-full mp-4">
+
+            <!-- Contenido -->
             <strong>
                 <label class="uppercase text-gray-100 text-base">{{ __('Contenido') }}</label>
 

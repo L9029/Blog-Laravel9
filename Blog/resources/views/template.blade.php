@@ -16,8 +16,8 @@
                             <img src="{{ asset('images/logo.png') }}" class="h-12">
                         </a>
 
-                        <form action="">
-                            <input type="text" placeholder="Buscar">
+                        <form action="{{ route('home') }}" method="get" class="flex-grow">
+                            <input type="text" name="search" placeholder="Buscar" value="{{ request('search') }}" class="border border-gray-200 rounded py-2 px-4 w-1/2">
                         </form>
                     </div>
 

@@ -7,8 +7,12 @@ use App\Models\Post;
 
 class PageController extends Controller
 {
-    public function home(){
-        $posts = Post::first()->paginate(); //Con paginate se paginan los registros
+    public function home(Request $request){
+        $search = $request->search; //Recupera el valor pasado por parametro
+
+        //Se realiza una consulta a la base de datos para devolver un post y a su vez se indica que si se busca un nombre en especifico de un post el mismo sea filtrado por where()
+        $posts = Post::where('title', 'LIKE', "%{$search}%")->latest()->paginate(); //Con paginate se paginan los registros
+
         return view("home", ["posts" => $posts]);
     }
 

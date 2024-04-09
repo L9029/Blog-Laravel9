@@ -11,14 +11,15 @@
                 </div>
 
                 <!-- Navigation Links -->
+                <!-- Modificando la ruta del dashboard para que ahora redirija a la ruta hacia el Home con todo los posts -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link :href="route('home')">
+                        {{ __('Home') }}
                     </x-nav-link>
                 </div>
                 <!-- Agregando la ruta para el listado de publicaciones -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('posts.index')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                         {{ __('Listado de Publicaciones') }}
                     </x-nav-link>
                 </div>
@@ -68,9 +69,16 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+        <!-- Modificando el menu de navegacion para vista responsive -->
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+            <x-responsive-nav-link :href="route('home')">
+                {{ __('Home') }}
+            </x-responsive-nav-link>
+        </div>
+        
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
+                {{ __('Listado de Publicaciones') }}
             </x-responsive-nav-link>
         </div>
 

@@ -35,13 +35,11 @@ Route::controller(PageController::class)->group(function (){
     Route::get('blog/{post:slug}', "post")->name("post"); //El parametro slug pasa a ser una propiedad de la tabla posts
 });
 
-// Rutas del sistema de inicio de sesion y el dashboard
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Rutas del sistema de inicio de sesion y el dashboard (Redireccion la vista del dashboard a los posts)
+Route::redirect('/dashboard', "posts")->name('dashboard');
 
-//Ruta del listado de publicaciones
-Route::resource("posts", PostController::class)->except("show");
+//Ruta del listado de publicaciones (Ahora protege a los posts que se muestran en el dashboard)
+Route::resource("posts", PostController::class)->middleware(['auth', 'verified'])->except("show");
 
 
 require __DIR__.'/auth.php';
